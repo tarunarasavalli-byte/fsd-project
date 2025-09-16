@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Booking Details</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    .header {
+      background-color: white;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .logo {
+      height: 60px;
+    }
+
+    .header-title {
+      color: #1730a1;
+      font-weight: bold;
+      font-size: 20px;
+      margin-left: 10px;
+    }
+
+    .nav-btn {
+      padding: 8px 14px;
+      font-size: 14px;
+      border: none;
+      border-radius: 5px;
+      background-color: #b92a11;
+      color: white;
+      cursor: pointer;
+      margin: 0 5px;
+    }
+
+    .nav-btn:hover {
+      background-color: #5a6268;
+    }
+
+    .top-nav {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    main {
+      padding: 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h1 {
+      text-align: center;
+      color: #007BFF;
+      margin-bottom: 30px;
+    }
+
+    form {
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 25px;
+    }
+
+    label {
+      font-weight: bold;
+      margin-bottom: 8px;
+      color: #333;
+    }
+
+    input,
+    select {
+      padding: 8px 10px;
+      border: 2px solid #007BFF;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+
+    #passengerCount {
+      width: 250px;
+      text-align: center;
+    }
+
+    .passenger-details {
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      background-color: #f9f9f9;
+      padding: 15px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .passenger-details h3 {
+      color: #007BFF;
+      margin-bottom: 15px;
+    }
+
+    .passenger-fields {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .form-subgroup {
+      display: flex;
+      flex-direction: column;
+      flex: 1 1 30%;
+      min-width: 200px;
+    }
+
+    .submit-btn {
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      display: block;
+      margin: 20px auto 0;
+    }
+
+    .submit-btn:hover {
+      background-color: #0056b3;
+    }
+
+    .cost-display {
+      margin-top: 10px;
+      padding: 10px;
+      background-color: #e9f7fe;
+      border-radius: 5px;
+      text-align: center;
+      font-weight: bold;
+      color: #007BFF;
+      border: 1px dashed #007BFF;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="top-nav">
+      <button class="nav-btn" onclick="goBack()"> Previous</button>
+    </div>
+
+    <div style="display: flex; align-items: center;">
+      <span class="header-title">EASY TRAVELS</span>
+    </div>
+
+    <div class="top-nav">
+      <button class="nav-btn" onclick="goHome()">🏠 Home</button>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <h1>Booking Details</h1>
+
+    <form id="bookingForm">
+      <div class="form-group">
+        <label for="passengerCount">Number of Passengers</label>
+        <input type="number" id="passengerCount" name="passengerCount" min="1" required />
+        <div id="costDisplay" class="cost-display">
+          Estimated Cost: ₹0
+        </div>
+      </div>
+
+      <div id="passengerDetailsContainer"></div>
+
+      <button type="submit" class="submit-btn">Submit</button>
+    </form>
+  </main>
+
+  <!-- Script -->
+  <script>
+    // Base price per passenger (you can adjust this)
+    const BASE_PRICE_PER_PERSON = 5000;
+    // Discount tiers (passengers, discount percentage)
+    const DISCOUNT_TIERS = [
+      { minPassengers: 5, discount: 0.10 },  // 10% discount for 5+ passengers
+      { minPassengers: 10, discount: 0.15 }, // 15% discount for 10+ passengers
+      { minPassengers: 15, discount: 0.20 }  // 20% discount for 15+ passengers
+    ];
+
+    function goBack() {
+      window.history.back();
+    }
+
+    function goHome() {
+      window.location.href = 'index.html';
+    }
+
+    function calculateEstimatedCost(passengerCount) {
+      let total = passengerCount * BASE_PRICE_PER_PERSON;
+      
+      // Apply discounts if applicable
+      for (const tier of DISCOUNT_TIERS) {
+        if (passengerCount >= tier.minPassengers) {
+          total = total * (1 - tier.discount);
+        }
+      }
+      
+      return Math.round(total);
+    }
+
+    function updateCostDisplay(passengerCount) {
+      const costDisplay = document.getElementById('costDisplay');
+      if (passengerCount > 0) {
+        const estimatedCost = calculateEstimatedCost(passengerCount);
+        costDisplay.textContent = `Estimated Cost: ₹${estimatedCost.toLocaleString()}`;
+        
+        // Show discount message if applicable
+        const discountTier = DISCOUNT_TIERS.find(tier => passengerCount >= tier.minPassengers);
+        if (discountTier) {
+          costDisplay.innerHTML += `<br><small>(${discountTier.discount * 100}% group discount applied!)</small>`;
+        }
+      } else {
+        costDisplay.textContent = 'Estimated Cost: ₹0';
+      }
+    }
+
+    const passengerCountInput = document.getElementById('passengerCount');
+    const passengerDetailsContainer = document.getElementById('passengerDetailsContainer');
+    const bookingForm = document.getElementById('bookingForm');
+
+    passengerCountInput.addEventListener('input', () => {
+      const count = parseInt(passengerCountInput.value) || 0;
+      
+      // Update cost display
+      updateCostDisplay(count);
+      
+      // Update passenger details
+      passengerDetailsContainer.innerHTML = '';
+
+      if (count > 0) {
+        for (let i = 1; i <= count; i++) {
+          const passengerDiv = document.createElement('div');
+          passengerDiv.classList.add('passenger-details');
+          passengerDiv.innerHTML = `
+            <h3>Passenger ${i}</h3>
+            <div class="passenger-fields">
+              <div class="form-subgroup">
+                <label for="name${i}">Name</label>
+                <input type="text" id="name${i}" name="name${i}" required />
+              </div>
+              <div class="form-subgroup">
+                <label for="age${i}">Age</label>
+                <input type="number" id="age${i}" name="age${i}" min="1" required />
+              </div>
+              <div class="form-subgroup">
+                <label for="gender${i}">Gender</label>
+                <select id="gender${i}" name="gender${i}" required>
+                  <option value="">Select</option>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <div class="form-subgroup">
+                <label for="mobile${i}">Mobile</label>
+                <input type="tel" id="mobile${i}" name="mobile${i}" pattern="\\d{10}" required />
+              </div>
+              <div class="form-subgroup">
+                <label for="aadhar${i}">Aadhar Number</label>
+                <input type="text" id="aadhar${i}" name="aadhar${i}" pattern="\\d{12}" required />
+              </div>
+              <div class="form-subgroup">
+                <label for="document${i}">Document</label>
+                <input type="file" id="document${i}" name="document${i}" accept=".pdf,.jpg,.jpeg,.png" required />
+              </div>
+            </div>
+          `;
+          passengerDetailsContainer.appendChild(passengerDiv);
+        }
+      }
+    });
+
+    bookingForm.addEventListener('submit', function (event) {
+      const inputs = bookingForm.querySelectorAll('input, select');
+      let allValid = true;
+
+      inputs.forEach(input => {
+        if (!input.checkValidity()) {
+          allValid = false;
+        }
+      });
+
+      if (!allValid) {
+        alert('Please fill out all fields correctly.');
+        event.preventDefault();
+        return;
+      }
+
+      event.preventDefault();
+      window.location.href = 'payment.html';
+    });
+
+    // Initialize with 1 passenger by default
+    passengerCountInput.value = 1;
+    passengerCountInput.dispatchEvent(new Event('input'));
+  </script>
+
+</body>
+</html>

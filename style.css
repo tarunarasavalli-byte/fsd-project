@@ -1,0 +1,425 @@
+\* General Styles
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5f5;
+}
+
+/* Header */
+.header {
+  /* background-color: #007bff; */
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+}
+
+.header span {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* Auth Buttons - Side by Side */
+.auth-buttons a {
+  display: inline-block;
+}
+
+.auth-buttons button {
+  background-color: white;
+  color: #007bff;
+  border: 1px solid white;
+  padding: 8px 15px;
+  margin-left: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.auth-buttons button:hover {
+  background-color: #0056b3;
+  color: white;
+}
+
+/* Hero Section */
+.hero {
+  background: url('images/background.jpg') no-repeat center center/cover;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 40px;
+}
+
+.hero p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+/* Search Bar - Smaller and Centered */
+.search-bar {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.search-bar input {
+  width: 40%;
+  max-width: 300px;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px 0 0 5px;
+}
+
+.search-bar button {
+  padding: 10px 20px;
+  font-size: 14px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 0 5px 5px 0;
+}
+
+.search-bar button:hover {
+  background-color: #218838;
+}
+
+/* Call to Action Buttons */
+.cta-buttons {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.cta-buttons button {
+  background-color: #ff5733;
+  color: white;
+  padding: 12px 20px;
+  font-size: 18px;
+  margin: 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.cta-buttons button:hover {
+  background-color: #e44d26;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 10px;
+  background: #007bff;
+  color: white;
+  margin-top: 40px;
+}
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5f5;
+}
+
+/* Header */
+.header {
+  background-color: #007bff;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+}
+
+.header span {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* Auth Buttons - Side by Side */
+.auth-buttons a {
+  display: inline-block;
+}
+
+.auth-buttons button {
+  background-color: white;
+  color: #007bff;
+  border: 1px solid white;
+  padding: 8px 15px;
+  margin-left: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.auth-buttons button:hover {
+  background-color: #0056b3;
+  color: white;
+}
+
+/* Hero Section */
+.hero {
+  background: url('images/background.jpg') no-repeat center center/cover;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 40px;
+}
+
+.hero p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+/* Search Bar - Smaller and Centered */
+.search-bar {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.search-bar input {
+  width: 40%;
+  max-width: 300px;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px 0 0 5px;
+}
+
+.search-bar button {
+  padding: 10px 20px;
+  font-size: 14px;
+  margin: 10px; 
+  background-color: #28a745;
+  color: white;
+  border: 15px;
+  cursor: pointer;
+  border-radius: 0 5px 5px 0;
+}
+
+.search-bar button:hover {
+  background-color: #218838;
+}
+
+/* Call to Action Buttons */
+.cta-buttons {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.cta-buttons button {
+  background-color: #ff5733;
+  color: white;
+  padding: 12px 20px;
+  font-size: 18px;
+  margin: 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.cta-buttons button:hover {
+  background-color: #e44d26;
+}
+
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 10px;
+  background: #007bff;
+  color: white;
+  margin-top: 40px;
+} 
+a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  .form-container {
+    padding: 20px;
+  }
+}
+/* Buttons */
+/* button {
+  width: 100%;
+  padding: 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+} */
+ /* Header */
+.header {
+  background-color: #007bff;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+}
+
+.header span {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.back-home {
+  color: white;
+  background-color: #ff5733;
+  padding: 10px 15px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.back-home:hover {
+  background-color: #e44d26;
+}
+
+/* Form Container */
+.form-container {
+  background-color: white;
+  margin: 80px auto;
+  padding: 40px;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.form-container h2 {
+  color: #007bff;
+  text-align: center;
+}
+
+.form-container p {
+  color: #666;
+  text-align: center;
+}
+
+label {
+  display: block;
+  margin-top: 15px;
+  font-weight: bold;
+  color: #333;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  margin-top: 8px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+/* Search Results */
+.search-results {
+  padding: 20px;
+  text-align: center;
+}
+
+#search-query {
+  color: #007bff;
+  font-weight: bold;
+}
+
+#trips-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.trip-card {
+  background: white;
+  padding: 15px;
+  margin: 10px;
+  border-radius: 10px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  width: 250px;
+  text-align: left;
+}
+
+#map {
+  width: 100%;
+  height: 300px;
+  margin-top: 30px;
+}
+
+#blog-suggestion {
+  margin-top: 30px;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 10px;
+}
+/* Booking Page */
+.booking-container {
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 20px;
+  background: white;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  text-align: center;
+  border-radius: 8px;
+}
+
+.booking-container h2 {
+  color: #007bff;
+}
+
+.booking-container label {
+  display: block;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+.booking-container input, 
+.booking-container select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.confirm-booking {
+  margin-top: 20px;
+  background-color: #28a745;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.confirm-booking:hover {
+  background-color: #218838;
+}
+

@@ -1,0 +1,194 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Confirmed</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f3f4f6;
+        }
+        .confirmation-container {
+            text-align: center;
+        }
+        .checkmark {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: #4caf50;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px auto;
+            animation: pop 0.5s ease-in-out;
+        }
+        .checkmark::before {
+            content: '✔';
+            color: white;
+            font-size: 50px;
+        }
+        @keyframes pop {
+            0% {
+                transform: scale(0);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        .message {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+        .download-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: #007bff;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .download-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <span>Travel Booking</span>
+        <a href="index.html" class="back-home" style="align-items: flex-start; text-decoration: none;">🏠 Home</a>
+    </header>
+    <div class="confirmation-container">
+        <div class="checkmark"></div>
+        <p class="message">Your booking has been successfully completed!</p>
+        <a href="booked-ticket.pdf" download class="download-btn">Download Tickets</a>
+    </div>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Booking Confirmed</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background:#007bff;
+      /* background: linear-gradient(to right, #e0f7fa, #fce4ec); */
+      position: relative;
+    }
+
+    .home-btn {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      background-color: #f5f5f5dd;
+      padding: 10px 15px;
+      border-radius: 10px;
+      text-decoration: none;
+      color: #040a12;
+      font-weight: bold;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .home-btn:hover {
+      background-color: #dceeff;
+      transform: scale(1.05);
+    }
+
+    .confirmation-container {
+      background-color: #fff;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      text-align: center;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .checkmark {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background-color: #4caf50;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto 20px auto;
+      animation: pop 0.5s ease-in-out;
+    }
+
+    .checkmark::before {
+      content: '✔';
+      color: white;
+      font-size: 50px;
+    }
+
+    @keyframes pop {
+      0% {
+        transform: scale(0);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    .message {
+      font-size: 20px;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .download-btn {
+      display: inline-block;
+      padding: 12px 24px;
+      font-size: 16px;
+      color: rgb(243, 243, 243);
+      background-color: #007bff;
+      text-decoration: none;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 123, 255, 0.4);
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .download-btn:hover {
+      background-color: #0056b3;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <a href="index.html" class="home-btn">🏠 Home</a>
+  <div class="confirmation-container">
+    <div class="checkmark"></div>
+    <p class="message">Your booking has been successfully completed!</p>
+    <a href="booked-ticket.pdf" download class="download-btn">Download Tickets</a>
+  </div>
+</body>
+</html>

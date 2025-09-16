@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Rajasthan</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #f7971e, #ffd200);
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      background-color: rgba(255, 255, 255, 0.95);
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    h1 {
+      text-align: center;
+      color: #bf360c;
+      font-size: 3em;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 1.2em;
+      line-height: 1.6;
+      text-align: center;
+      color: #333;
+    }
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .gallery img {
+      width: 300px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    .back-button, .book-button {
+      display: inline-block;
+      margin: 10px 10px 20px 0;
+      background-color: #e65100;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    .back-button:hover, .book-button:hover {
+      background-color: #bf360c;
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .modal-content {
+      background-color: white;
+      margin: 10% auto;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 600px;
+      text-align: center;
+    }
+
+    .modal-content img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .close:hover {
+      color: black;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="index.html" class="back-button">🏠 HOME</a>
+    <h1>Welcome to Rajasthan</h1>
+    <p>🏜️ Land of Kings & Heritage <br>
+      Rajasthan, the royal state of India, is a vibrant blend of majestic forts, golden sand dunes, traditional culture, and rich history. From Jaipur’s palaces to Jaisalmer’s deserts, every corner tells a royal tale.
+    </p>
+
+    <div class="gallery">
+      <img src="images/rajasthan1.jpg" alt="Amber Fort" onclick="openModal('images/rajasthan1.jpg', 'Amber Fort – A majestic palace overlooking Jaipur')">
+      <img src="images/rajasthan2.jpg" alt="Desert Safari" onclick="openModal('images/rajasthan2.jpg', 'Experience the thrill of a desert safari in Jaisalmer')">
+      <img src="images/rajasthan3.jpg" alt="Udaipur Lake Palace" onclick="openModal('images/rajasthan3.jpg', 'Lake Palace of Udaipur – Beauty floating on water')">
+      <a href="booking.html?destination=Rajasthan" class="book-button">BOOK NOW</a>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div id="imageModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <img id="modalImage" src="" alt="">
+      <p id="modalText"></p>
+    </div>
+  </div>
+
+  <script>
+    function openModal(imgSrc, description) {
+      document.getElementById("imageModal").style.display = "block";
+      document.getElementById("modalImage").src = imgSrc;
+      document.getElementById("modalText").textContent = description;
+    }
+
+    function closeModal() {
+      document.getElementById("imageModal").style.display = "none";
+    }
+
+    window.onclick = function(event) {
+      const modal = document.getElementById("imageModal");
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+  </script>
+</body>
+</html>

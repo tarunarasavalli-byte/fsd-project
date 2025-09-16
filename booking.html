@@ -1,0 +1,178 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Your Trip</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="header">
+    <a href="https://srkrec.edu.in/" target="_blank" class="logo-link">
+      <img src="images/logo.png" alt="S.R.K.R Travels " class="logo" style="height: 70px;" />
+    </a>   
+    <span>S.R.K.R TRAVELS</span>
+    <a href="index.html" class="back-home">🏠 Home</a>
+  </header>
+
+  <section class="booking-container">
+    <h2>Book Your Trip to <span id="destination-name"></span></h2>
+
+    <form id="booking-form">
+      <label for="travel-date" style="padding: 20px;">Select Travel Date:</label>
+      <input type="date" id="travel-date" required>
+
+      <label for="transport-mode">Choose Transport:</label>
+      <select id="transport-mode">
+        <option value="Flight">Flight</option>
+        <option value="Train">Train</option>
+        <option value="Bus">Bus</option>
+        <option value="Private Car">Private Car</option>
+      </select>
+
+      <a   href="bookingdetails.html " class="confirm Booking" 
+      style=" border-radius: 10px; padding: 5px; background-color: rgba(57, 206, 70, 0.775);margin-top: 2px; color: black;justify-content: bottom">confirm booking</a>
+      
+    </form>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book Your Trip</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    .header {
+      background-color: #ffffff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .header span {
+      font-size: 20px;
+      font-weight: bold;
+      color: #1d4ed8;
+    }
+
+    .back-home {
+      text-decoration: none;
+      background-color: #e0e0e0;
+      padding: 8px 14px;
+      border-radius: 6px;
+      color: black;
+    }
+
+    .booking-container {
+      max-width: 600px;
+      margin: 40px auto;
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .booking-container h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #007BFF;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    input,
+    select {
+      padding: 10px;
+      font-size: 16px;
+      border: 2px solid #007BFF;
+      border-radius: 6px;
+    }
+
+    .btn-container {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+
+    .btn {
+      padding: 10px 16px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      text-align: center;
+    }
+
+    .btn-confirm {
+      background-color: #3ccf4e;
+      color: black;
+    }
+
+    .btn-back {
+      background-color: #d3d3d3;
+      color: black;
+    }
+
+    .btn:hover {
+      opacity: 0.85;
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <!-- <a href="https://srkrec.edu.in/" target="_blank" class="logo-link"> -->
+      <!-- <img src="images/logo.png" alt="S.R.K.R Travels" style="height: 70px;" />
+    </a> -->
+    <span>Easy Travels</span>
+    <a href="index.html" class="back-home" style=" background-color: #007BFF;">🏠 Home</a>
+  </header>
+
+  <section class="booking-container">
+    <h2>Book Your Trip to <span id="destination-name">[Destination]</span></h2>
+
+    <form id="booking-form">
+      <label for="travel-date">Select Travel Date:</label>
+      <input type="date" id="travel-date" required />
+
+      <label for="transport-mode">Choose Transport:</label>
+      <select id="transport-mode">
+        <option value="Flight">Flight</option>
+        <option value="Train">Train</option>
+        <option value="Bus">Bus</option>
+        <option value="Private Car">Private Car</option>
+      </select>
+
+      <div class="btn-container">
+        <!-- <a href="javascript:history.back()" class="btn btn-back">← Previous</a> -->
+        <a href="bookingdetails.html" class="btn btn-confirm" >Confirm Booking</a>
+      </div>
+    </form>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>

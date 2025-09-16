@@ -1,0 +1,197 @@
+
+
+
+<!-- new code -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Travel Booking</title>
+  <link rel="stylesheet" href="style2.css" />
+  <style>
+    /* Add the search bar styling from the second file */
+    .search-bar {
+      display: flex;
+      justify-content: center;
+      margin: 20px 0;
+      padding: 0 20px;
+    }
+    
+    .search-bar input[type="text"] {
+      padding: 12px;
+      width: 60%;
+      max-width: 500px;
+      font-size: 16px;
+      border-radius: 5px 0 0 5px;
+      border: 1px solid #ccc;
+      border-right: none;
+    }
+    
+    .search-bar button {
+      padding: 12px 20px;
+      font-size: 16px;
+      border: none;
+      background: #007BFF;
+      color: #fff;
+      border-radius: 0 5px 5px 0;
+      cursor: pointer;
+    }
+    
+    .search-bar button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="header">
+    <span style="font-size: 24px; padding-inline: 5%; color: rgb(23, 48, 161);">EASY TRAVELS</span>
+    <div class="auth-buttons">
+      <a href="login.html"><button>Login</button></a>
+      <a href="signup.html"><button>Signup</button></a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Make Your Plans into Real</h1>
+    <p>Explore amazing destinations with the best deals</p>
+  </section>
+
+  <!-- Search Bar -->
+  <form class="search-bar" onsubmit="searchPlace(event)">
+    <input type="text" id="searchInput" placeholder="Search for trips..." required />
+    <button type="submit">Search</button>
+  </form>
+
+  <!-- Call to Action Buttons -->
+  <section class="cta-buttons">
+    <div class="trip-cards-container">
+      <div class="trip-card">
+        <h3>Goa</h3>
+        <p>Transport: Flight, Bus</p>
+        <a href="goa.html" class="book-now">Book Now</a>
+      </div>
+      <div class="trip-card">
+        <h3>Jammu & Kashmir</h3>
+        <p>Transport: Flight, Bus</p>
+        <a href="jk.html" class="book-now">Book Now</a>
+      </div>
+      <div class="trip-card">
+        <h3>Manali</h3>
+        <p>Transport: Bus, Flight</p>
+        <a href="manali.html" class="book-now">Book Now</a>
+      </div>
+      <div class="trip-card">
+        <h3>Kerala</h3>
+        <p>Transport: Train, Flight</p>
+        <a href="Kerala.html" class="book-now">Book Now</a>
+      </div>
+      <div class="trip-card">
+        <h3>Ladakh</h3>
+        <p>Transport: Flight, Bike</p>
+        <a href="ladakh.html" class="book-now">Book Now</a>
+      </div>
+      <div class="trip-card">
+        <h3>Andaman</h3>
+        <p>Transport: Ship, Flight</p>
+        <a href="andaman.html" class="book-now">Book Now</a>
+      </div>
+      <div class="trip-card">
+        <h3>Ooty</h3>
+        <p>Transport: Train, Bus</p>
+        <a href="ooty.html" class="book-now">Book Now</a>
+      </div>
+      <div class="trip-card">
+        <h3>Dubai</h3>
+        <p>Transport: Flight, Ship</p>
+        <a href="dubai.html" class="book-now">Book Now</a>
+      </div>
+      <div class="trip-card">
+        <h3>Rajasthan</h3>
+        <p>Transport: Train, Flight</p>
+        <a href="rajasthan.html" class="book-now">Book Now</a>
+      </div>
+      <div class="trip-card">
+        <h3>Mumbai</h3>
+        <p>Transport: Train, Flight</p>
+        <a href="mumbai.html" class="book-now">Book Now</a>
+      </div>
+      <div class="trip-card">
+        <h3>Thailand</h3>
+        <p>Transport: Flight, Ship</p>
+        <a href="thailand.html" class="book-now">Book Now</a>
+      </div>
+      <div class="trip-card">
+        <h3>Vietnam</h3>
+        <p>Transport: Train, Flight</p>
+        <a href="vietnam.html" class="book-now">Book Now</a>
+      </div>
+    </div>
+    
+    <div class="explore-deals">
+      <a href="explore-deals.html" class="explore-deals-button">Explore Deals</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    &copy; 2025 Easy Travels | All Rights Reserved
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    function searchPlace(event) {
+      event.preventDefault(); // Prevent form submission
+      
+      const searchInput = document.getElementById("searchInput").value.trim().toLowerCase();
+      
+      // Mapping destinations to their respective HTML pages
+      const pages = {
+        "goa": "goa.html",
+        "manali": "manali.html",
+        "kerala": "kerala.html",
+        "jammu & kashmir": "jk.html",
+        "jammu and kashmir": "jk.html",
+        "jammu": "jk.html",
+        "kashmir": "jk.html",
+        "ladakh": "ladakh.html",
+        "andaman": "andaman.html",
+        "ooty": "ooty.html",
+        "dubai": "dubai.html",
+        "rajasthan": "rajasthan.html",
+        "mumbai": "mumbai.html",
+        "thailand": "thailand.html",
+        "vietnam": "vietnam.html",
+        "veitnam": "vietnam.html", // common misspelling
+        "delhi": "delhi.html"
+      };
+
+      // Check for matches (including partial matches)
+      for (const [destination, page] of Object.entries(pages)) {
+        if (searchInput.includes(destination) || destination.includes(searchInput)) {
+          window.location.href = page;
+          return;
+        }
+      }
+
+      // If no direct match found, redirect to search page with query
+      window.location.href = `search.html?query=${encodeURIComponent(searchInput)}`;
+    }
+
+    // Optional: Allow pressing Enter key to search
+    document.addEventListener("DOMContentLoaded", function () {
+      document.getElementById("searchInput").addEventListener("keypress", function (e) {
+        if (e.key === "Enter") {
+          searchPlace(e);
+        }
+      });
+    });
+  </script>
+</body>
+</html>

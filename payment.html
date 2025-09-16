@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Payment Options - Easy Travels</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    .header {
+      background-color: white;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .header-title {
+      color: #1730a1;
+      font-weight: bold;
+      font-size: 20px;
+    }
+
+    .nav-btn {
+      padding: 8px 14px;
+      font-size: 14px;
+      border: none;
+      border-radius: 5px;
+      background-color: #b92a11;
+      color: white;
+      cursor: pointer;
+      margin: 0 5px;
+    }
+
+    .nav-btn:hover {
+      background-color: #5a6268;
+    }
+
+    main {
+      padding: 20px;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    h1 {
+      text-align: center;
+      color: #007BFF;
+      margin-bottom: 30px;
+    }
+
+    .booking-summary {
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      margin-bottom: 30px;
+    }
+
+    .summary-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+
+    .total-cost {
+      font-weight: bold;
+      font-size: 18px;
+      border-top: 1px solid #eee;
+      padding-top: 10px;
+      margin-top: 10px;
+    }
+
+    .payment-options {
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .payment-method {
+      margin-bottom: 20px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 15px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .payment-method:hover {
+      border-color: #007BFF;
+      box-shadow: 0 0 10px rgba(0,123,255,0.1);
+    }
+
+    .payment-method.selected {
+      border: 2px solid #007BFF;
+      background-color: #f0f8ff;
+    }
+
+    .payment-method input[type="radio"] {
+      margin-right: 10px;
+    }
+
+    .payment-details {
+      margin-top: 15px;
+      display: none;
+    }
+
+    .payment-method.selected .payment-details {
+      display: block;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    .pay-now-btn {
+      background-color: #28a745;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      display: block;
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    .pay-now-btn:hover {
+      background-color: #218838;
+    }
+
+    .upi-apps {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .upi-app {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: #f8f9fa;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border: 1px solid #ddd;
+    }
+
+    .upi-app:hover {
+      border-color: #007BFF;
+    }
+
+    .upi-app img {
+      width: 30px;
+      height: 30px;
+    }
+
+    .card-icons {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .card-icon {
+      width: 40px;
+    }
+
+    .netbanking-banks {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .bank-option {
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .bank-option:hover {
+      border-color: #007BFF;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div>
+      <button class="nav-btn" onclick="goBack()"> Previous</button>
+    </div>
+    <div class="header-title">EASY TRAVELS</div>
+    <div>
+      <button class="nav-btn" onclick="goHome()">🏠 Home</button>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <h1>Complete Your Payment</h1>
+
+    <!-- Booking Summary -->
+    <div class="booking-summary">
+      <h2>Booking Summary</h2>
+      <div class="summary-item">
+        <span>Number of Passengers:</span>
+        <span id="summary-passengers">0</span>
+      </div>
+      <div class="summary-item">
+        <span>Base Price:</span>
+        <span id="summary-base-price">₹0</span>
+      </div>
+      <div class="summary-item" id="discount-item" style="display:none;">
+        <span>Discount:</span>
+        <span id="summary-discount">-₹0</span>
+      </div>
+      <div class="summary-item total-cost">
+        <span>Total Amount:</span>
+        <span id="summary-total">₹0</span>
+      </div>
+    </div>
+
+    <!-- Payment Options -->
+    <div class="payment-options">
+      <h2>Select Payment Method</h2>
+      
+      <!-- Credit/Debit Card -->
+      <div class="payment-method" onclick="selectPaymentMethod('card')">
+        <input type="radio" name="paymentMethod" id="card" value="card">
+        <label for="card">Credit/Debit Card</label>
+        <div class="card-icons">
+          <img src="https://cdn-icons-png.flaticon.com/512/196/196578.png" alt="Visa" class="card-icon">
+          <img src="https://cdn-icons-png.flaticon.com/512/196/196561.png" alt="Mastercard" class="card-icon">
+          <img src="https://cdn-icons-png.flaticon.com/512/196/196566.png" alt="Amex" class="card-icon">
+          <img src="https://cdn-icons-png.flaticon.com/512/196/196565.png" alt="Discover" class="card-icon">
+        </div>
+        <div class="payment-details">
+          <div class="form-group">
+            <label for="card-number">Card Number</label>
+            <input type="text" id="card-number" placeholder="1234 5678 9012 3456" maxlength="16">
+          </div>
+          <div class="form-group">
+            <label for="card-name">Name on Card</label>
+            <input type="text" id="card-name" placeholder="John Doe">
+          </div>
+          <div style="display: flex; gap: 15px;">
+            <div class="form-group" style="flex: 1;">
+              <label for="card-expiry">Expiry Date</label>
+              <input type="text" id="card-expiry" placeholder="MM/YY">
+            </div>
+            <div class="form-group" style="flex: 1;">
+              <label for="card-cvv">CVV</label>
+              <input type="text" id="card-cvv" placeholder="123" maxlength="3">
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- UPI -->
+      <div class="payment-method" onclick="selectPaymentMethod('upi')">
+        <input type="radio" name="paymentMethod" id="upi" value="upi">
+        <label for="upi">UPI Payment</label>
+        <div class="payment-details">
+          <div class="form-group">
+            <label for="upi-id">UPI ID</label>
+            <input type="text" id="upi-id" placeholder="yourname@upi">
+          </div>
+          <div class="upi-apps">
+            <div class="upi-app" onclick="selectUpiApp('gpay')">
+              <img src="https://cdn-icons-png.flaticon.com/512/300/300221.png" alt="Google Pay">
+            </div>
+            <div class="upi-app" onclick="selectUpiApp('phonepe')">
+              <img src="https://cdn-icons-png.flaticon.com/512/2111/2111663.png" alt="PhonePe">
+            </div>
+            <div class="upi-app" onclick="selectUpiApp('paytm')">
+              <img src="https://cdn-icons-png.flaticon.com/512/825/825454.png" alt="Paytm">
+            </div>
+            <div class="upi-app" onclick="selectUpiApp('amazonpay')">
+              <img src="https://cdn-icons-png.flaticon.com/512/906/906310.png" alt="Amazon Pay">
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Net Banking -->
+      <div class="payment-method" onclick="selectPaymentMethod('netbanking')">
+        <input type="radio" name="paymentMethod" id="netbanking" value="netbanking">
+        <label for="netbanking">Net Banking</label>
+        <div class="payment-details">
+          <div class="form-group">
+            <label>Select Bank</label>
+            <div class="netbanking-banks">
+              <div class="bank-option" onclick="selectBank('sbi')">SBI</div>
+              <div class="bank-option" onclick="selectBank('hdfc')">HDFC</div>
+              <div class="bank-option" onclick="selectBank('icici')">ICICI</div>
+              <div class="bank-option" onclick="selectBank('axis')">Axis</div>
+              <div class="bank-option" onclick="selectBank('kotak')">Kotak</div>
+              <div class="bank-option" onclick="selectBank('other')">Other</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Wallet -->
+      <div class="payment-method" onclick="selectPaymentMethod('wallet')">
+        <input type="radio" name="paymentMethod" id="wallet" value="wallet">
+        <label for="wallet">Wallet</label>
+        <div class="payment-details">
+          <div class="form-group">
+            <label>Select Wallet</label>
+            <div style="display: flex; gap: 10px; margin-top: 10px;">
+              <div style="flex: 1; padding: 10px; border: 1px solid #ddd; border-radius: 4px; text-align: center; cursor: pointer;" onclick="selectWallet('paytm')">
+                <img src="https://cdn-icons-png.flaticon.com/512/825/825454.png" alt="Paytm" style="width: 30px;">
+                <div>Paytm</div>
+              </div>
+              <div style="flex: 1; padding: 10px; border: 1px solid #ddd; border-radius: 4px; text-align: center; cursor: pointer;" onclick="selectWallet('mobikwik')">
+                <img src="https://cdn-icons-png.flaticon.com/512/2491/2491935.png" alt="MobiKwik" style="width: 30px;">
+                <div>MobiKwik</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button class="pay-now-btn" onclick="processPayment()">Pay Now</button>
+    </div>
+  </main>
+
+  <script>
+    // Retrieve booking details from URL parameters or localStorage
+    const urlParams = new URLSearchParams(window.location.search);
+    const passengerCount = parseInt(urlParams.get('passengers')) || 1;
+    const totalCost = parseFloat(urlParams.get('total')) || 5000;
+
+    // Calculate base price and discount
+    const BASE_PRICE_PER_PERSON = 5000;
+    const basePrice = passengerCount * BASE_PRICE_PER_PERSON;
+    let discount = 0;
+    let discountPercentage = 0;
+
+    // Apply discount if applicable
+    if (passengerCount >= 15) {
+      discountPercentage = 0.20;
+    } else if (passengerCount >= 10) {
+      discountPercentage = 0.15;
+    } else if (passengerCount >= 5) {
+      discountPercentage = 0.10;
+    }
+
+    discount = basePrice * discountPercentage;
+    const calculatedTotal = basePrice - discount;
+
+    // Update summary
+    document.getElementById('summary-passengers').textContent = passengerCount;
+    document.getElementById('summary-base-price').textContent = `₹${basePrice.toLocaleString()}`;
+    
+    if (discount > 0) {
+      document.getElementById('discount-item').style.display = 'flex';
+      document.getElementById('summary-discount').textContent = `-₹${discount.toLocaleString()} (${discountPercentage * 100}%)`;
+    }
+    
+    document.getElementById('summary-total').textContent = `₹${calculatedTotal.toLocaleString()}`;
+
+    // Payment method selection
+    function selectPaymentMethod(method) {
+      document.querySelectorAll('.payment-method').forEach(el => {
+        el.classList.remove('selected');
+      });
+      document.querySelector(`.payment-method[onclick="selectPaymentMethod('${method}')"]`).classList.add('selected');
+      document.getElementById(method).checked = true;
+    }
+
+    // UPI app selection
+    function selectUpiApp(app) {
+      alert(`You'll be redirected to ${app.charAt(0).toUpperCase() + app.slice(1)} to complete payment`);
+    }
+
+    // Bank selection
+    function selectBank(bank) {
+      alert(`You'll be redirected to ${bank.toUpperCase()} Net Banking`);
+    }
+
+    // Wallet selection
+    function selectWallet(wallet) {
+      alert(`You'll be redirected to ${wallet.charAt(0).toUpperCase() + wallet.slice(1)}`);
+    }
+
+    // Process payment
+    function processPayment() {
+      const selectedMethod = document.querySelector('input[name="paymentMethod"]:checked');
+      
+      if (!selectedMethod) {
+        alert('Please select a payment method');
+        return;
+      }
+
+      // Validate payment details based on method
+      const method = selectedMethod.value;
+      let isValid = true;
+
+      if (method === 'card') {
+        const cardNumber = document.getElementById('card-number').value;
+        const cardName = document.getElementById('card-name').value;
+        const cardExpiry = document.getElementById('card-expiry').value;
+        const cardCvv = document.getElementById('card-cvv').value;
+
+        if (!cardNumber || !cardName || !cardExpiry || !cardCvv) {
+          isValid = false;
+          alert('Please fill all card details');
+        } else if (cardNumber.length !== 16) {
+          isValid = false;
+          alert('Please enter a valid 16-digit card number');
+        } else if (cardCvv.length !== 3) {
+          isValid = false;
+          alert('Please enter a valid 3-digit CVV');
+        }
+      } else if (method === 'upi') {
+        const upiId = document.getElementById('upi-id').value;
+        if (!upiId || !upiId.includes('@')) {
+          isValid = false;
+          alert('Please enter a valid UPI ID');
+        }
+      }
+
+      if (isValid) {
+        // Store booking details in localStorage before redirecting
+        localStorage.setItem('bookingDetails', JSON.stringify({
+          passengers: passengerCount,
+          totalAmount: calculatedTotal,
+          paymentMethod: method,
+          bookingDate: new Date().toLocaleDateString()
+        }));
+        
+        // Redirect to booking confirmation page
+        window.location.href = 'bookingconfirmed.html';
+      }
+    }
+
+    // Navigation functions
+    function goBack() {
+      window.history.back();
+    }
+
+    function goHome() {
+      window.location.href = 'index.html';
+    }
+
+    // Initialize with first payment method selected
+    selectPaymentMethod('card');
+  </script>
+</body>
+</html>
